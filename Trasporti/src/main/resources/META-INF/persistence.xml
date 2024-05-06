@@ -12,7 +12,7 @@
             <property name="jakarta.persistence.jdbc.password" value="postgresql" />
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
 
-            <property name="hibernate.default_schema" value="trasporti" />
+            <property name="hibernate.default_schema" value="transport" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
             <property name="hibernate.hbm2ddl.auto" value="update" />
 
