@@ -2,17 +2,26 @@ package it.epicode.trasporti.entities;
 
 
 import it.epicode.trasporti.entities.constants.TravelDocumentsTables;
+import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+import java.util.Date;
+
 @Entity
-@Table(name = TravelDocumentsTables.Names.WEEKLY_PASS)
-@DiscriminatorValue(TravelDocumentsTables.Discriminators.WEEKLY_PASS)
+@DiscriminatorValue(TravelDocumentsTables.Discriminators.TRAVEL_PASS)
 public class WeeklyPass extends TravelPass{
 
-    public WeeklyPass(User user) {
+
+
+
+    public WeeklyPass(Date date, Long place, Card card) {
         super.setDuration(7);
-        super.setUser(user);
+        super.setCard(card);
+        super.setIssuingDate(date);
+        super.setIssuingPlace(place);
     }
+
+
 }

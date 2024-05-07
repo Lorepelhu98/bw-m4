@@ -15,12 +15,10 @@ public abstract class TravelDocument extends BaseEntity{
     private Date issuingDate;
 
     @Column(name = "issuing_place")
-    @Temporal(TemporalType.DATE)
     private Long issuingPlace;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+
+
 
     public TravelDocument(){}
     public TravelDocument(Date issuingDate, Long issuingPlace) {
@@ -36,8 +34,14 @@ public abstract class TravelDocument extends BaseEntity{
         return issuingPlace;
     }
 
-    public User getUser() {
-        return user;
+
+
+    public void setIssuingDate(Date issuingDate) {
+        this.issuingDate = issuingDate;
+    }
+
+    public void setIssuingPlace(Long issuingPlace) {
+        this.issuingPlace = issuingPlace;
     }
 
 }

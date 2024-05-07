@@ -10,6 +10,7 @@ public class Card extends BaseEntity{
     @OneToOne
     private User user;
 
+
     @Column(name = "renewal_date")
     @Temporal(TemporalType.DATE)
     private LocalDate renewalDate;
@@ -23,5 +24,14 @@ public class Card extends BaseEntity{
         this.user = user;
         this.renewalDate = LocalDate.now();
         this.expirationDate = renewalDate.plusYears(1L);
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "user=" + user +
+                ", renewalDate=" + renewalDate +
+                ", expirationDate=" + expirationDate +
+                '}';
     }
 }

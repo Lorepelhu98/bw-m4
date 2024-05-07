@@ -1,6 +1,10 @@
 package it.epicode.trasporti.dao;
 
 import it.epicode.trasporti.entities.TravelDocument;
+import it.epicode.trasporti.entities.TravelPass;
+import jakarta.persistence.NoResultException;
+
+import java.time.LocalDate;
 
 public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao{
 
@@ -18,5 +22,6 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao{
             log.error("Exception saving entity...", e);
         }
     }
+
 
 }

@@ -20,6 +20,7 @@ public class UserDaoImpl extends BaseDao implements UserDao{
         }
     }
 
+    @Override
     public User findUserById(Long id){
         try{
             return em.createQuery("SELECT u FROM User u WHERE u.id =:id", User.class)
@@ -27,8 +28,6 @@ public class UserDaoImpl extends BaseDao implements UserDao{
                     .getSingleResult();
         } catch (NoResultException e){
             return null;
-        } finally {
-            em.close();
         }
     }
 

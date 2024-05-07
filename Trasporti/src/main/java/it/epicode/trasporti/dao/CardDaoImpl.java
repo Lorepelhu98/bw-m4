@@ -1,6 +1,7 @@
 package it.epicode.trasporti.dao;
 
 import it.epicode.trasporti.entities.Card;
+import jakarta.persistence.NoResultException;
 
 public class CardDaoImpl extends BaseDao implements CardDao{
 
@@ -16,6 +17,17 @@ public class CardDaoImpl extends BaseDao implements CardDao{
             log.debug("After commit {}", card);
         } catch (Exception e){
             log.error("Exception saving entity...", e);
+        }
+    }
+
+    @Override
+    public Card findCardById(Long id){
+        try{
+            return em.createQuery("SELECT c FROM Card c WHERE c.id =:id", Card.class)
+                    .setParameter("id",id)
+                    .getSingleResult();
+        } catch (NoResultException e){
+            return null;
         }
     }
 

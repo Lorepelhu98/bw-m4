@@ -7,4 +7,6 @@ public interface CardDao {
 
 
     void save(Card card);
+
+    Card findCardById(Long id);
 }
