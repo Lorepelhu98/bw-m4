@@ -1,5 +1,7 @@
-package it.epicode.trasporti.dao;
+package it.epicode.trasporti.dao.implementations;
 
+import it.epicode.trasporti.dao.BaseDao;
+import it.epicode.trasporti.dao.interfaces.VehicleDao;
 import it.epicode.trasporti.entities.tranports.Vehicle;
 import jakarta.persistence.NoResultException;
 
@@ -21,7 +23,7 @@ public class VehicleDaoImpl extends BaseDao implements VehicleDao {
     }
 
     @Override
-    public Vehicle findTransportById(Long id){
+    public Vehicle findVehicleById(Long id){
         try{
             return em.createQuery("SELECT t FROM Vehicle t WHERE t.id =:id", Vehicle.class)
                     .setParameter("id",id)

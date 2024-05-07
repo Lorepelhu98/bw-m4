@@ -1,9 +1,11 @@
-package it.epicode.trasporti.dao;
+package it.epicode.trasporti.dao.implementations;
 
+import it.epicode.trasporti.dao.BaseDao;
+import it.epicode.trasporti.dao.interfaces.CardDao;
 import it.epicode.trasporti.entities.Card;
 import jakarta.persistence.NoResultException;
 
-public class CardDaoImpl extends BaseDao implements CardDao{
+public class CardDaoImpl extends BaseDao implements CardDao {
 
     @Override
     public void save(Card card){

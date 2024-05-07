@@ -1,8 +1,10 @@
-package it.epicode.trasporti.dao;
+package it.epicode.trasporti.dao.implementations;
 
+import it.epicode.trasporti.dao.BaseDao;
+import it.epicode.trasporti.dao.interfaces.StoreDao;
 import it.epicode.trasporti.entities.stores.Store;
 
-public class StoreDaoImpl extends BaseDao implements StoreDao{
+public class StoreDaoImpl extends BaseDao implements StoreDao {
 
     @Override
     public void save(Store store){

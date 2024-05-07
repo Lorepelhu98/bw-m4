@@ -1,9 +1,11 @@
-package it.epicode.trasporti.dao;
+package it.epicode.trasporti.dao.implementations;
 
+import it.epicode.trasporti.dao.BaseDao;
+import it.epicode.trasporti.dao.interfaces.UserDao;
 import it.epicode.trasporti.entities.User;
 import jakarta.persistence.NoResultException;
 
-public class UserDaoImpl extends BaseDao implements UserDao{
+public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
     public void save(User user){

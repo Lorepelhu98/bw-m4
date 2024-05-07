@@ -1,4 +1,4 @@
-package it.epicode.trasporti.dao;
+package it.epicode.trasporti.dao.interfaces;
 
 import it.epicode.trasporti.entities.stores.Store;
 

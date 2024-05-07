@@ -1,8 +1,10 @@
-package it.epicode.trasporti.dao;
+package it.epicode.trasporti.dao.implementations;
 
+import it.epicode.trasporti.dao.BaseDao;
+import it.epicode.trasporti.dao.interfaces.MaintenanceDao;
 import it.epicode.trasporti.entities.tranports.Maintenance;
 
-public class MaintenanceDaoImpl extends BaseDao implements MaintenanceDao{
+public class MaintenanceDaoImpl extends BaseDao implements MaintenanceDao {
 
     @Override
     public void save(Maintenance maintenance){

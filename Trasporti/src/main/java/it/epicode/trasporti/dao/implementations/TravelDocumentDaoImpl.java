@@ -1,8 +1,10 @@
-package it.epicode.trasporti.dao;
+package it.epicode.trasporti.dao.implementations;
 
+import it.epicode.trasporti.dao.BaseDao;
+import it.epicode.trasporti.dao.interfaces.TravelDocumentDao;
 import it.epicode.trasporti.entities.travel_documents.TravelDocument;
 
-public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao{
+public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao {
 
     @Override
     public void save(TravelDocument travelDocument){

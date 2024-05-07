@@ -14,6 +14,9 @@ public class Vehicle extends BaseEntity {
     @OneToMany(mappedBy = "vehicle")
     private List<Maintenance> maintenance;
 
+    @OneToMany(mappedBy = "vehicle")
+    private List<SingleRoute> singleRoute;
+
     private int capacity;
 
     public Vehicle(){}
