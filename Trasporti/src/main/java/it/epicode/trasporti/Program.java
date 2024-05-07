@@ -82,17 +82,24 @@ public class Program {
         SingleRoute sr3 = new SingleRoute(vehicle.findVehicleById(3L),route.findRouteById(2L),30);
         SingleRoute sr4 = new SingleRoute(vehicle.findVehicleById(5L),route.findRouteById(3L),50);
         SingleRoute sr5 = new SingleRoute(vehicle.findVehicleById(4L),route.findRouteById(2L),45);
+        SingleRoute sr6 = new SingleRoute(vehicle.findVehicleById(1L),route.findRouteById(1L),25);
 
         //singleRoute.save(sr1);
         //singleRoute.save(sr2);
         //singleRoute.save(sr3);
         //singleRoute.save(sr4);
         //singleRoute.save(sr5);
+        //singleRoute.save(sr6);
 
-        System.out.println(route.calculateAvgTime(1L));
-        System.out.println(route.calculateAvgTime(2L));
-        System.out.println(route.calculateAvgTime(3L));
+        //System.out.println(route.calculateAvgTime(1L));
+        //System.out.println(route.calculateAvgTime(2L));
+        //System.out.println(route.calculateAvgTime(3L));
 
+        //route.updateAvgTime(1L);
+        //route.updateAvgTime(2L);
+        //route.updateAvgTime(3L);
+
+        System.out.println(singleRoute.routesPerVehicle(1L,1L));
 
     }
 

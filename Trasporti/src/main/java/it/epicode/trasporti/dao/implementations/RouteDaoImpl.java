@@ -3,11 +3,7 @@ package it.epicode.trasporti.dao.implementations;
 import it.epicode.trasporti.dao.BaseDao;
 import it.epicode.trasporti.dao.interfaces.RouteDao;
 import it.epicode.trasporti.entities.tranports.Route;
-import it.epicode.trasporti.entities.tranports.SingleRoute;
 import jakarta.persistence.NoResultException;
-
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class RouteDaoImpl extends BaseDao implements RouteDao {
 
@@ -37,6 +33,7 @@ public class RouteDaoImpl extends BaseDao implements RouteDao {
         }
     }
 
+    @Override
     public int calculateAvgTime(Long routeId) {
         try {
             Double avgTime = em.createQuery("SELECT AVG(r.travelTime) FROM SingleRoute r WHERE r.route.id = :id GROUP BY r.route.id", Double.class)
@@ -45,6 +42,31 @@ public class RouteDaoImpl extends BaseDao implements RouteDao {
             return avgTime != null ? (int) Math.round(avgTime) : 0;
         } catch (NoResultException ex) {
             return 0;
+        }
+    }
+
+    @Override
+    public void updateAvgTime(Long routeId) {
+
+        int newAvgTime = calculateAvgTime(routeId);
+        var t = em.getTransaction();
+
+        try {
+            t.begin();
+
+            Route route = em.find(Route.class, routeId);
+            if (route != null) {
+                route.setAvgTime(newAvgTime);
+                em.merge(route);
+            }
+
+            t.commit();
+        } catch (Exception e) {
+
+            if (t.isActive()) {
+                t.rollback();
+            }
+            e.printStackTrace();
         }
     }
 

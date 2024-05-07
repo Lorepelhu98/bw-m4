@@ -6,4 +6,8 @@ public interface RouteDao {
     void save(Route route);
 
     Route findRouteById(Long id);
+
+    int calculateAvgTime(Long routeId);
+
+    void updateAvgTime(Long routeId);
 }
