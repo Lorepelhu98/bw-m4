@@ -3,18 +3,20 @@ package it.epicode.trasporti.entities.tranports;
 import it.epicode.trasporti.entities.BaseEntity;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "transport_type", discriminatorType = DiscriminatorType.STRING)
-public class Transport extends BaseEntity {
+public class Vehicle extends BaseEntity {
 
-    @OneToOne(mappedBy = "transport")
-    private Maintenance maintenance;
+    @OneToMany(mappedBy = "vehicle")
+    private List<Maintenance> maintenance;
 
     private int capacity;
 
-    public Transport(){}
+    public Vehicle(){}
 
     public int getCapacity() {
         return capacity;

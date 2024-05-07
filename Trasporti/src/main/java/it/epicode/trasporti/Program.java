@@ -5,7 +5,7 @@ import it.epicode.trasporti.entities.*;
 import it.epicode.trasporti.entities.tranports.Bus;
 import it.epicode.trasporti.entities.tranports.Maintenance;
 import it.epicode.trasporti.entities.tranports.Tram;
-import it.epicode.trasporti.entities.tranports.Transport;
+import it.epicode.trasporti.entities.tranports.Vehicle;
 import it.epicode.trasporti.entities.travel_documents.MonthlyPass;
 import it.epicode.trasporti.entities.travel_documents.Ticket;
 import it.epicode.trasporti.entities.travel_documents.TravelDocument;
@@ -24,7 +24,7 @@ public class Program {
         StoreDaoImpl store = new StoreDaoImpl();
         TravelDocumentDaoImpl document = new TravelDocumentDaoImpl();
         CardDaoImpl card = new CardDaoImpl();
-        TransportDaoImpl transport = new TransportDaoImpl();
+        VehicleDaoImpl transport = new VehicleDaoImpl();
         MaintenanceDaoImpl maintenance = new MaintenanceDaoImpl();
 
 
@@ -55,15 +55,15 @@ public class Program {
         //card.save(card2);
         //card.save(card3);
 
-        Transport transport1 = new Bus();
-        Transport transport2 = new Tram();
-        Transport transport3 = new Bus();
+        Vehicle transport1 = new Bus();
+        Vehicle transport2 = new Tram();
+        Vehicle transport3 = new Bus();
         //transport.save(transport1);
         //transport.save(transport2);
         //transport.save(transport3);
 
         Maintenance maintenance1 = new Maintenance(transport.findTransportById(3L), LocalDate.now());
-        maintenance.save(maintenance1);
+        //maintenance.save(maintenance1);
     }
 
 }

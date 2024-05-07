@@ -6,29 +6,30 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "maintenance", schema = "transport")
 public class Maintenance extends BaseEntity {
 
-    @OneToOne
-    private Transport transport;
+    @ManyToOne
+    private Vehicle vehicle;
 
-    @Temporal(TemporalType.DATE)
+    @Column(name="maintenance_start",nullable = false)
     private LocalDate start;
 
-    @Temporal(TemporalType.DATE)
+    @Column(name="maintenance_end",nullable = true)
     private LocalDate end;
 
-
-    public Maintenance(Transport transport, LocalDate start) {
-        this.transport = transport;
+    public Maintenance(){}
+    public Maintenance(Vehicle vehicle, LocalDate start) {
+        this.vehicle = vehicle;
         this.start = start;
     }
 
-    public Transport getTransport() {
-        return transport;
+    public Vehicle getTransport() {
+        return vehicle;
     }
 
-    public void setTransport(Transport transport) {
-        this.transport = transport;
+    public void setTransport(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public LocalDate getStart() {
@@ -50,7 +51,7 @@ public class Maintenance extends BaseEntity {
     @Override
     public String toString() {
         return "Maintenance{" +
-                "transport=" + transport +
+                "vehicle=" + vehicle +
                 ", start=" + start +
                 ", end=" + end +
                 '}';

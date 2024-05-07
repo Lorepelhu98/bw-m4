@@ -12,11 +12,11 @@ public class Card extends BaseEntity{
 
 
     @Column(name = "renewal_date")
-    @Temporal(TemporalType.DATE)
+
     private LocalDate renewalDate;
 
     @Column(name = "expiration_date")
-    @Temporal(TemporalType.DATE)
+
     private LocalDate expirationDate;
 
     public Card(){}
