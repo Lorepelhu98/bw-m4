@@ -9,14 +9,14 @@ import jakarta.persistence.Table;
 import java.util.Date;
 
 @Entity
-@DiscriminatorValue(TravelDocumentsTables.Discriminators.TRAVEL_PASS)
+//@DiscriminatorValue(TravelDocumentsTables.Discriminators.TRAVEL_PASS)
 public class MonthlyPass extends TravelPass{
 
 
 
-    public MonthlyPass(Date date, Long place, Card card) {
+    public MonthlyPass(Date date, Long place, User user) {
     super.setDuration(30);
-    super.setCard(card);
+    super.setUser(user);
     super.setIssuingDate(date);
     super.setIssuingPlace(place);
     }

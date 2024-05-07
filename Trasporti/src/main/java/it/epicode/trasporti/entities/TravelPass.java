@@ -6,32 +6,32 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "travel_pass", schema = "transport")
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class TravelPass extends TravelDocument{
+//@Table(name = "travel_pass", schema = "transport")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class TravelPass extends TravelDocument{
 
 
     @ManyToOne
-    @JoinColumn(name = "card_id")
-    private Card card;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "duration")
     int duration;
 
     public TravelPass(){}
 
-    public TravelPass(Date date, Long place , Card card) {
-    this.setCard(card);
+    public TravelPass(Date date, Long place , User user) {
+    this.setUser(user);
     super.setIssuingDate(date);
     super.setIssuingPlace(place);
     }
 
-    public Card getCard() {
-        return card;
+    public User getUser() {
+        return user;
     }
 
-    public void setCard(Card card) {
-        this.card = card;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getDuration() {

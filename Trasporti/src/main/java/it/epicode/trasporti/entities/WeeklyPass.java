@@ -10,15 +10,15 @@ import jakarta.persistence.Table;
 import java.util.Date;
 
 @Entity
-@DiscriminatorValue(TravelDocumentsTables.Discriminators.TRAVEL_PASS)
+//@DiscriminatorValue(TravelDocumentsTables.Discriminators.TRAVEL_PASS)
 public class WeeklyPass extends TravelPass{
 
 
 
 
-    public WeeklyPass(Date date, Long place, Card card) {
+    public WeeklyPass(Date date, Long place, User user) {
         super.setDuration(7);
-        super.setCard(card);
+        super.setUser(user);
         super.setIssuingDate(date);
         super.setIssuingPlace(place);
     }

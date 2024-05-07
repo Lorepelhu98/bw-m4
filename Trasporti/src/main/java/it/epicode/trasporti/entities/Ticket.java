@@ -9,7 +9,7 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = TravelDocumentsTables.Names.TICKETS)
+//@Table(name = TravelDocumentsTables.Names.TICKETS)
 @DiscriminatorValue(TravelDocumentsTables.Discriminators.TICKETS)
 public class Ticket extends TravelDocument{
 
