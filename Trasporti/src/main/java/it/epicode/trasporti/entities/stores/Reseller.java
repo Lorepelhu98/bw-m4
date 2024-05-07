@@ -1,4 +1,4 @@
-package it.epicode.trasporti.entities;
+package it.epicode.trasporti.entities.stores;
 
 
 import it.epicode.trasporti.entities.constants.StoreTables;

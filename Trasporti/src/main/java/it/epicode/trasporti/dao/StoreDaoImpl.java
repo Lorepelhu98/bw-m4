@@ -1,6 +1,6 @@
 package it.epicode.trasporti.dao;
 
-import it.epicode.trasporti.entities.Store;
+import it.epicode.trasporti.entities.stores.Store;
 
 public class StoreDaoImpl extends BaseDao implements StoreDao{
 

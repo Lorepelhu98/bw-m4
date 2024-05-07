@@ -1,5 +1,6 @@
-package it.epicode.trasporti.entities;
+package it.epicode.trasporti.entities.travel_documents;
 
+import it.epicode.trasporti.entities.BaseEntity;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -8,7 +9,7 @@ import java.util.Date;
 @Table(name = "travel_document", schema = "transport")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "item_type", discriminatorType = DiscriminatorType.STRING)
-public abstract class TravelDocument extends BaseEntity{
+public abstract class TravelDocument extends BaseEntity {
 
     @Column(name = "issuing_date")
     @Temporal(TemporalType.DATE)

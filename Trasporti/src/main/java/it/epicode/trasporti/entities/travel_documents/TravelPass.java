@@ -1,6 +1,6 @@
-package it.epicode.trasporti.entities;
+package it.epicode.trasporti.entities.travel_documents;
 
-import it.epicode.trasporti.entities.constants.TravelDocumentsTables;
+import it.epicode.trasporti.entities.User;
 import jakarta.persistence.*;
 
 import java.util.Date;

@@ -1,10 +1,6 @@
 package it.epicode.trasporti.dao;
 
-import it.epicode.trasporti.entities.TravelDocument;
-import it.epicode.trasporti.entities.TravelPass;
-import jakarta.persistence.NoResultException;
-
-import java.time.LocalDate;
+import it.epicode.trasporti.entities.travel_documents.TravelDocument;
 
 public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao{
 

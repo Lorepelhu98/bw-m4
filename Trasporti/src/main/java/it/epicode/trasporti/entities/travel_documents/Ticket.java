@@ -1,9 +1,8 @@
-package it.epicode.trasporti.entities;
+package it.epicode.trasporti.entities.travel_documents;
 
 import it.epicode.trasporti.entities.constants.TravelDocumentsTables;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
 import java.util.Date;
 
