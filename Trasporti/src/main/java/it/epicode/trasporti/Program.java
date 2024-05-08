@@ -37,16 +37,12 @@ public class Program {
         //user.save(user4);
 
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        Date dataCreazione1 = sdf.parse("03-05-2024");
-        Date dataCreazione2 = sdf.parse("05-05-2024");
-        Date dataCreazione3 = sdf.parse("01-04-2024");
-        TravelDocument document1 = new Ticket(dataCreazione1,3L);
-        TravelDocument document2 = new WeeklyPass(dataCreazione2, 3L, user.findUserById(1L));
-        TravelDocument document3 = new MonthlyPass(dataCreazione3, 4L , user.findUserById(2L));
-        TravelDocument document4 = new Ticket(dataCreazione1,1L);
-        TravelDocument document5 = new Ticket(dataCreazione2,5L);
-        TravelDocument document6 = new Ticket(dataCreazione3,4L);
+        TravelDocument document1 = new Ticket(LocalDate.of(2024, 5, 7),3L);
+        TravelDocument document2 = new WeeklyPass(LocalDate.of(2024,5,5), 3L, user.findUserById(1L));
+        TravelDocument document3 = new MonthlyPass(LocalDate.of(2024,4,1), 4L , user.findUserById(2L));
+        TravelDocument document4 = new Ticket(LocalDate.of(2024, 5, 7),1L);
+        TravelDocument document5 = new Ticket(LocalDate.of(2024,5,5),5L);
+        TravelDocument document6 = new Ticket(LocalDate.of(2024,4,1),4L);
         //document.save(document1);
         //document.save(document2);
         //document.save(document3);
@@ -109,24 +105,43 @@ public class Program {
         //route.updateAvgTime(2L);
         //route.updateAvgTime(3L);
 
-        //System.out.println(singleRoute.routesPerVehicle(1L,1L));
+        //System.out.println(singleRoute.routesPerVehicle(1L,1L));  //Numero di volte che un mezzo percorre una tratta
 
-        //card.renewCard(5L);
+
+
+        //card.renewCard(5L);     //Funzione per rinnovare la tessera
 
         //document.validateTicket(1L,vehicle.findVehicleById(1L));
         //document.validateTicket(4L,vehicle.findVehicleById(1L));
         //document.validateTicket(5L,vehicle.findVehicleById(5L));
 
 
-        //System.out.println(document.ticketsPerVehicle(1L));
+        //System.out.println(document.ticketsPerVehicle(1L));  //Ricerca biglietti vidimati per mezzo
 
-        SimpleDateFormat sdfh = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        //SimpleDateFormat sdfh = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-        Date startDate = sdfh.parse("2024-02-01 00:00");
-        Date endDate = sdfh.parse("2024-05-05 23:59");
+        //Date startDate1 = sdfh.parse("2024-02-01 00:00");
+        //Date endDate1 = sdfh.parse("2024-05-05 23:59");
 
 
-        System.out.println(document.ticketsPerTimeRange(startDate,endDate));
+        //System.out.println(document.ticketsPerTimeRange(startDate1,endDate1)); //Ricerca biglietti vidimati per intervallo temporale
+
+
+
+        System.out.println(document.checkPassValidity(2L) ? "valida" : "non valida");
+
+
+        System.out.println(document.documentsPerStore(3L));
+        System.out.println(document.documentsPerStore(1L));
+
+
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        LocalDate startDate2 = LocalDate.of(2024,1,1);
+        LocalDate endDate2 = LocalDate.of(2024,5,6);
+
+        System.out.println(document.documentsPerTimeRange(startDate2,endDate2));
+
 
     }
 

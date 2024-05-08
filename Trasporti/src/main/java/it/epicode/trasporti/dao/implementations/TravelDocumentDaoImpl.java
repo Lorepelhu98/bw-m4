@@ -5,7 +5,9 @@ import it.epicode.trasporti.dao.interfaces.TravelDocumentDao;
 import it.epicode.trasporti.entities.tranports.Vehicle;
 import it.epicode.trasporti.entities.travel_documents.Ticket;
 import it.epicode.trasporti.entities.travel_documents.TravelDocument;
+import jakarta.persistence.NoResultException;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao {
@@ -66,6 +68,7 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
         }
     }
 
+    @Override
     public Long ticketsPerTimeRange(Date start, Date end){
 
         try {
@@ -77,6 +80,51 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
         } catch (Exception e) {
             log.error("An error occurred while trying to count tickets time range: {}", e.getMessage());
             return 0L;
+        }
+    }
+
+    @Override
+    public Long documentsPerStore(Long storeId){
+
+        try{
+            return em.createQuery("SELECT COUNT(d) FROM TravelDocument d WHERE d.issuingPlace =:storeId", Long.class)
+                    .setParameter("storeId", storeId)
+                    .getSingleResult();
+        }  catch (Exception e) {
+        log.error("An error occurred while trying to count tickets per store: {}", e.getMessage());
+        return 0L;
+        }
+
+    }
+
+
+    public Long documentsPerTimeRange(LocalDate start, LocalDate end){
+        try {
+        return em.createQuery("SELECT COUNT(d) FROM TravelDocument d WHERE d.issuingDate >= :start AND d.issuingDate <= :end", Long.class)
+                .setParameter("start", start)
+                .setParameter("end", end)
+                .getSingleResult();
+        } catch (Exception e) {
+            log.error("An error occurred while trying to count travel documents time range: {}", e.getMessage());
+            return 0L;
+        }
+    }
+
+
+
+
+    @Override
+    public boolean checkPassValidity(Long cardId) {
+        try {
+            LocalDate expDate = em.createQuery(
+                            "SELECT t.expirationDate FROM TravelPass t WHERE t.user.id = " +
+                                    "(SELECT c.user.id FROM Card c WHERE c.id = :cardId)", LocalDate.class)
+                    .setParameter("cardId", cardId)
+                    .getSingleResult();
+
+            return expDate.isAfter(LocalDate.now());
+        } catch (NoResultException e) {
+            return false;
         }
     }
 

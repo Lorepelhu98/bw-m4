@@ -3,6 +3,7 @@ package it.epicode.trasporti.entities.travel_documents;
 import it.epicode.trasporti.entities.BaseEntity;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,8 +13,7 @@ import java.util.Date;
 public abstract class TravelDocument extends BaseEntity {
 
     @Column(name = "issuing_date")
-    @Temporal(TemporalType.DATE)
-    private Date issuingDate;
+    private LocalDate issuingDate;
 
     @Column(name = "issuing_place")
     private Long issuingPlace;
@@ -22,12 +22,12 @@ public abstract class TravelDocument extends BaseEntity {
 
 
     public TravelDocument(){}
-    public TravelDocument(Date issuingDate, Long issuingPlace) {
+    public TravelDocument(LocalDate issuingDate, Long issuingPlace) {
         this.issuingDate = issuingDate;
         this.issuingPlace = issuingPlace;
     }
 
-    public Date getIssuingDate() {
+    public LocalDate getIssuingDate() {
         return issuingDate;
     }
 
@@ -37,7 +37,7 @@ public abstract class TravelDocument extends BaseEntity {
 
 
 
-    public void setIssuingDate(Date issuingDate) {
+    public void setIssuingDate(LocalDate issuingDate) {
         this.issuingDate = issuingDate;
     }
 

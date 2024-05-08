@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 public class TicketMachine extends Store{
     public boolean status;
 
+    public TicketMachine(){}
     public TicketMachine(boolean status) {
         this.status = status;
     }

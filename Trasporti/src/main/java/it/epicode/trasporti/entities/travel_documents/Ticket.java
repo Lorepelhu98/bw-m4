@@ -4,6 +4,7 @@ import it.epicode.trasporti.entities.constants.TravelDocumentsTables;
 import it.epicode.trasporti.entities.tranports.Vehicle;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -25,7 +26,7 @@ public class Ticket extends TravelDocument{
     public Ticket() {
     }
 
-    public Ticket(Date issuingDate, Long issuingPlace) {
+    public Ticket(LocalDate issuingDate, Long issuingPlace) {
         super(issuingDate, issuingPlace);
         this.valid = true;
     }
