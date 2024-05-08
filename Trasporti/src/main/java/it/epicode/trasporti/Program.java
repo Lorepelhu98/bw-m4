@@ -120,10 +120,10 @@ public class Program {
 
         //System.out.println(document.ticketsPerVehicle(1L));
 
-        //SimpleDateFormat sdfh = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat sdfh = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-        Date startDate = sdf.parse("2024-02-01");
-        Date endDate = sdf.parse("2024-05-05");
+        Date startDate = sdfh.parse("2024-02-01 00:00");
+        Date endDate = sdfh.parse("2024-05-05 23:59");
 
 
         System.out.println(document.ticketsPerTimeRange(startDate,endDate));

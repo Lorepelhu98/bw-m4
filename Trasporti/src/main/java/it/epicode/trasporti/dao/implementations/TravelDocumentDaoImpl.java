@@ -69,6 +69,7 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
     public Long ticketsPerTimeRange(Date start, Date end){
 
         try {
+            log.debug("Querying tickets from {} to {}", start, end);
             return em.createQuery("SELECT COUNT(t) FROM Ticket t WHERE t.validationTime >= :start AND t.validationTime <= :end", Long.class)
                     .setParameter("start", start)
                     .setParameter("end", end)
