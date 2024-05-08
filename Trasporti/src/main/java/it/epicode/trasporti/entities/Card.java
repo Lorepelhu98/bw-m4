@@ -10,13 +10,10 @@ public class Card extends BaseEntity{
     @OneToOne
     private User user;
 
-
     @Column(name = "renewal_date")
-
     private LocalDate renewalDate;
 
     @Column(name = "expiration_date")
-
     private LocalDate expirationDate;
 
     public Card(){}
@@ -33,5 +30,21 @@ public class Card extends BaseEntity{
                 ", renewalDate=" + renewalDate +
                 ", expirationDate=" + expirationDate +
                 '}';
+    }
+
+    public LocalDate getRenewalDate() {
+        return renewalDate;
+    }
+
+    public void setRenewalDate(LocalDate renewalDate) {
+        this.renewalDate = renewalDate;
+    }
+
+    public LocalDate getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
     }
 }

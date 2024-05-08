@@ -15,7 +15,7 @@ import java.util.Date;
 
 public class Program {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws Exception {
 
         UserDaoImpl user = new UserDaoImpl();
         StoreDaoImpl store = new StoreDaoImpl();
@@ -29,10 +29,12 @@ public class Program {
         User user1 = new User("Mario","Rossi");
         User user2 = new User("Giulia", "Bianchi");
         User user3 = new User("Riccardo", "Giallo");
+        User user4 = new User("Luca", "Valentinuzzi");
 
         //user.save(user1);
         //user.save(user2);
         //user.save(user3);
+        //user.save(user4);
 
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -42,16 +44,24 @@ public class Program {
         TravelDocument document1 = new Ticket(dataCreazione1,3L);
         TravelDocument document2 = new WeeklyPass(dataCreazione2, 3L, user.findUserById(1L));
         TravelDocument document3 = new MonthlyPass(dataCreazione3, 4L , user.findUserById(2L));
+        TravelDocument document4 = new Ticket(dataCreazione1,1L);
+        TravelDocument document5 = new Ticket(dataCreazione2,5L);
+        TravelDocument document6 = new Ticket(dataCreazione3,4L);
         //document.save(document1);
         //document.save(document2);
         //document.save(document3);
+        //document.save(document4);
+        //document.save(document5);
+        //document.save(document6);
 
         Card card1 = new Card(user.findUserById(1L));
         Card card2 = new Card(user.findUserById(2L));
         Card card3 = new Card(user.findUserById(3L));
+        Card card4 = new Card(user.findUserById(4L));
         //card.save(card1);
         //card.save(card2);
         //card.save(card3);
+        //card.save(card4);
 
         Vehicle v1 = new Bus();
         Vehicle v2 = new Tram();
@@ -99,7 +109,24 @@ public class Program {
         //route.updateAvgTime(2L);
         //route.updateAvgTime(3L);
 
-        System.out.println(singleRoute.routesPerVehicle(1L,1L));
+        //System.out.println(singleRoute.routesPerVehicle(1L,1L));
+
+        //card.renewCard(5L);
+
+        //document.validateTicket(1L,vehicle.findVehicleById(1L));
+        //document.validateTicket(4L,vehicle.findVehicleById(1L));
+        //document.validateTicket(5L,vehicle.findVehicleById(5L));
+
+
+        //System.out.println(document.ticketsPerVehicle(1L));
+
+        //SimpleDateFormat sdfh = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+        Date startDate = sdf.parse("2024-02-01");
+        Date endDate = sdf.parse("2024-05-05");
+
+
+        System.out.println(document.ticketsPerTimeRange(startDate,endDate));
 
     }
 

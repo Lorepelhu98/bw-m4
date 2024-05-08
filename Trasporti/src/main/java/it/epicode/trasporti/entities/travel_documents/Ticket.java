@@ -1,8 +1,8 @@
 package it.epicode.trasporti.entities.travel_documents;
 
 import it.epicode.trasporti.entities.constants.TravelDocumentsTables;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import it.epicode.trasporti.entities.tranports.Vehicle;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -12,21 +12,56 @@ import java.util.Date;
 @DiscriminatorValue(TravelDocumentsTables.Discriminators.TICKETS)
 public class Ticket extends TravelDocument{
 
-    private boolean validation;
+
+    private boolean valid;
+
+    @Column(name = "validation_time")
+    private Date validationTime;
+
+    @ManyToOne
+    @JoinColumn(name = "validation_place")
+    public Vehicle validationPlace;
 
     public Ticket() {
     }
 
     public Ticket(Date issuingDate, Long issuingPlace) {
         super(issuingDate, issuingPlace);
-        this.validation = false;
+        this.valid = true;
     }
 
-    public boolean isValidation() {
-        return validation;
+    public boolean isValid() {
+        return valid;
     }
 
-    public void setValidation(boolean validation) {
-        this.validation = validation;
+    public void setValid(boolean valid) {
+        this.valid = valid;
+    }
+
+
+    public Date getValidationTime() {
+        return validationTime;
+    }
+
+    public void setValidationTime(Date validationTime) {
+        this.validationTime = validationTime;
+    }
+
+
+    public Vehicle getValidationPlace() {
+        return validationPlace;
+    }
+
+    public void setValidationPlace(Vehicle validationPlace) {
+        this.validationPlace = validationPlace;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "valid=" + valid +
+                ", validationTime=" + validationTime +
+                ", validationPlace=" + validationPlace +
+                '}';
     }
 }
