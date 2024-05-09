@@ -45,15 +45,14 @@ public class Program {
         TravelDocument document6 = new Ticket(LocalDate.of(2024,4,1),4L);
         TravelDocument document7 = new Ticket(LocalDate.of(2024,5,1),2L);
         TravelDocument document8 = new Ticket(LocalDate.of(2023,10,11),4L);
-        //document.emitDocument(document1);
-        //document.emitDocument(document2);
-        //document.emitDocument(document3);
-        //document.emitDocument(document4);
-        //document.emitDocument(document5);
-        //document.emitDocument(document6);
-
-        document.emitDocument(document7);
-        document.emitDocument(document8);
+//        document.emitDocument(document1);
+//        document.emitDocument(document2);
+//        document.emitDocument(document3);
+//        document.emitDocument(document4);
+//        document.emitDocument(document5);
+//        document.emitDocument(document6);
+//        document.emitDocument(document7);
+//        document.emitDocument(document8);
 
 
         Card card1 = new Card(user.findUserById(1L));
@@ -79,7 +78,10 @@ public class Program {
         //vehicle.save(v6);
 
         Maintenance maintenance1 = new Maintenance(vehicle.findVehicleById(3L), LocalDate.now());
+        Maintenance maintenance2 = new Maintenance(vehicle.findVehicleById(3L), LocalDate.of(2024,4,30));
+        maintenance2.setEnd(LocalDate.of(2024,5,1));
         //maintenance.save(maintenance1);
+        //maintenance.save(maintenance2);
 
         Route route1 = new Route("Stazione Termini", "Piazza Venezia");
         Route route2 = new Route("Via Cristoforo Colombo", "San Giovanni");
@@ -96,12 +98,12 @@ public class Program {
         SingleRoute sr5 = new SingleRoute(vehicle.findVehicleById(4L),route.findRouteById(2L),45);
         SingleRoute sr6 = new SingleRoute(vehicle.findVehicleById(1L),route.findRouteById(1L),25);
 
-        //singleRoute.save(sr1);
-        //singleRoute.save(sr2);
-        //singleRoute.save(sr3);
-        //singleRoute.save(sr4);
-        //singleRoute.save(sr5);
-        //singleRoute.save(sr6);
+//        singleRoute.generateSingleRoute(sr1);
+//        singleRoute.generateSingleRoute(sr2);
+//        singleRoute.generateSingleRoute(sr3);
+//        singleRoute.generateSingleRoute(sr4);
+//        singleRoute.generateSingleRoute(sr5);
+//        singleRoute.generateSingleRoute(sr6);
 
         //System.out.println(route.calculateAvgTime(1L));
         //System.out.println(route.calculateAvgTime(2L));
@@ -150,7 +152,7 @@ public class Program {
 
 
 
-
+        singleRoute.generateSingleRoute(sr3);
     }
 
 }

@@ -57,10 +57,11 @@ private int travelTime;
 
     @Override
     public String toString() {
-        return "SingleRoute{" +
-                "vehicle=" + vehicle +
-                ", Route=" + route +
-                ", travelTime=" + travelTime +
-                '}';
+        return "Single route{" +
+                " Vehicle = " + vehicle.getId() +
+                ", Starting zone = " + route.getStartingZone() +
+                ", Last stop = " + route.getEndOfLine() +
+                ", Travel time = " + travelTime + " minutes" +
+                " }";
     }
 }

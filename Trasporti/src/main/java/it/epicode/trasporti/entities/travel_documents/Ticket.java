@@ -60,9 +60,11 @@ public class Ticket extends TravelDocument{
     @Override
     public String toString() {
         return "Ticket{" +
-                "valid=" + valid +
-                ", validationTime=" + validationTime +
-                ", validationPlace=" + validationPlace +
-                '}';
+                " Valid = " + valid +
+                ", Validation time = " + validationTime +
+                ", Validation place = " + validationPlace +
+                ", Issuing time = " + super.getIssuingDate() +
+                ", Issuing place = " + super.getIssuingPlace() +
+                " }";
     }
 }

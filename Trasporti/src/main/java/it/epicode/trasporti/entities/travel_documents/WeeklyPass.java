@@ -22,5 +22,15 @@ public class WeeklyPass extends TravelPass{
         super.setExpirationDate(date.plusDays(super.getDuration()));
     }
 
+    @Override
+    public String toString(){
+        return "Weekly pass{" +
+                " Duration = " + super.getDuration() + " days" +
+                ", Issuing date = " + super.getIssuingDate() +
+                ", Expiration date = " + super.getExpirationDate() +
+                ", Issuing place = " + super.getIssuingPlace() +
+                ", " + super.getUser() +
+                " }";
+    }
 
 }

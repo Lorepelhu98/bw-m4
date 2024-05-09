@@ -51,7 +51,7 @@ public class Maintenance extends BaseEntity {
     @Override
     public String toString() {
         return "Maintenance{" +
-                "vehicle=" + vehicle +
+                "vehicle=" + vehicle.getId() +
                 ", start=" + start +
                 ", end=" + end +
                 '}';
