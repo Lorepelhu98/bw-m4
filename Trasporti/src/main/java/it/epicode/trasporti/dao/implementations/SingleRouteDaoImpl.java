@@ -3,15 +3,13 @@ package it.epicode.trasporti.dao.implementations;
 import it.epicode.trasporti.dao.BaseDao;
 import it.epicode.trasporti.dao.interfaces.SingleRouteDao;
 import it.epicode.trasporti.entities.tranports.Maintenance;
-import it.epicode.trasporti.entities.tranports.Route;
 import it.epicode.trasporti.entities.tranports.SingleRoute;
 import it.epicode.trasporti.entities.tranports.Vehicle;
+import it.epicode.trasporti.exceptions.VehicleUnderMaintenanceException;
 import jakarta.persistence.NoResultException;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class SingleRouteDaoImpl extends BaseDao implements SingleRouteDao {
 
@@ -30,7 +28,8 @@ public class SingleRouteDaoImpl extends BaseDao implements SingleRouteDao {
         }
     }
 
-    public void generateSingleRoute(SingleRoute sr){
+    @Override
+    public void generateSingleRoute(SingleRoute sr) throws VehicleUnderMaintenanceException {
 
         Vehicle vehicle = sr.getVehicle();
         List<Maintenance> maintenances = em.createQuery("SELECT m FROM Maintenance m WHERE m.vehicle = :vehicle", Maintenance.class)
@@ -41,12 +40,16 @@ public class SingleRouteDaoImpl extends BaseDao implements SingleRouteDao {
                 .anyMatch(e -> e.getEnd() == null || e.getEnd().isAfter(LocalDate.now()));
 
         if (isUnderMaintenance) {
-            log.info("Il veicolo {} è in manutenzione. Impossibile assegnare tratta '{} - {}' al veicolo.", vehicle.getId(), sr.getRoute().getStartingZone(), sr.getRoute().getEndOfLine());
+            String message = String.format("Il veicolo %d è in manutenzione. Impossibile assegnare tratta '%s' al veicolo.", vehicle.getId(), sr.getRoute().getStartingZone(), sr.getRoute().getEndOfLine());
+            log.info(message);
+            throw new VehicleUnderMaintenanceException(message);
         } else {
             save(sr);
+
         }
     }
 
+    @Override
     public Long routesPerVehicle(Long routeId, Long vehicleId){
 
         try {

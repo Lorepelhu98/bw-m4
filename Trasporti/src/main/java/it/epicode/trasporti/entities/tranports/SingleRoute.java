@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+import java.util.Date;
+
 
 @Entity
 @Table(name = "single_routes", schema = "transport")
@@ -17,18 +19,18 @@ private Vehicle vehicle;
 @ManyToOne
 private Route route;
 
+@Column(name = "arrival_time")
+private Date arrivalTime;
 
 @Column(name = "travel_time")
 private int travelTime;
-
 
     public SingleRoute(){}
     public SingleRoute(Vehicle vehicle, Route route, int travelTime) {
         this.vehicle = vehicle;
         this.route = route;
         this.travelTime = travelTime;
-
-
+        this.arrivalTime = new Date();
     }
 
     public Vehicle getVehicle() {

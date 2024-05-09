@@ -2,17 +2,16 @@ package it.epicode.trasporti.entities.travel_documents;
 
 
 import it.epicode.trasporti.entities.User;
+import it.epicode.trasporti.entities.constants.TravelDocumentsTables;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-//@DiscriminatorValue(TravelDocumentsTables.Discriminators.TRAVEL_PASS)
+@DiscriminatorValue(TravelDocumentsTables.Discriminators.WEEKLY_PASS)
 public class WeeklyPass extends TravelPass{
-
-
-
 
     public WeeklyPass(LocalDate date, Long place, User user) {
         super.setDuration(7);

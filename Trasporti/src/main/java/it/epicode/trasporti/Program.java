@@ -8,10 +8,9 @@ import it.epicode.trasporti.entities.travel_documents.Ticket;
 import it.epicode.trasporti.entities.travel_documents.TravelDocument;
 import it.epicode.trasporti.entities.travel_documents.WeeklyPass;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class Program {
 
@@ -45,6 +44,7 @@ public class Program {
         TravelDocument document6 = new Ticket(LocalDate.of(2024,4,1),4L);
         TravelDocument document7 = new Ticket(LocalDate.of(2024,5,1),2L);
         TravelDocument document8 = new Ticket(LocalDate.of(2023,10,11),4L);
+
 //        document.emitDocument(document1);
 //        document.emitDocument(document2);
 //        document.emitDocument(document3);

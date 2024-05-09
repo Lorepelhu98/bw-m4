@@ -8,6 +8,7 @@ import it.epicode.trasporti.entities.stores.TicketMachine;
 import it.epicode.trasporti.entities.tranports.Vehicle;
 import it.epicode.trasporti.entities.travel_documents.Ticket;
 import it.epicode.trasporti.entities.travel_documents.TravelDocument;
+import it.epicode.trasporti.exceptions.VehicleNotFoundException;
 import jakarta.persistence.NoResultException;
 
 import java.time.LocalDate;
@@ -80,14 +81,17 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
         try {
             vehicle = em.find(Vehicle.class, vehicleId);
             if (vehicle == null) {
-                return 0L;
+                throw new VehicleNotFoundException("Vehicle with ID " + vehicleId + " not found.");
             }
             return em.createQuery("SELECT COUNT(t) FROM Ticket t WHERE t.validationPlace = :vehicle", Long.class)
                     .setParameter("vehicle", vehicle)
                     .getSingleResult();
+        } catch (VehicleNotFoundException e) {
+            log.error("Vehicle not found error: {}", e.getMessage());
+            throw e;
         } catch (Exception e) {
             log.error("An error occurred while trying to count tickets per vehicle: {}", e.getMessage());
-            return 0L;
+            throw e;
         }
     }
 
@@ -102,7 +106,7 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
                     .getSingleResult();
         } catch (Exception e) {
             log.error("An error occurred while trying to count tickets time range: {}", e.getMessage());
-            return 0L;
+            throw e;
         }
     }
 
@@ -115,12 +119,12 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
                     .getSingleResult();
         }  catch (Exception e) {
         log.error("An error occurred while trying to count tickets per store: {}", e.getMessage());
-        return 0L;
+        throw e;
         }
 
     }
 
-
+    @Override
     public Long documentsPerTimeRange(LocalDate start, LocalDate end){
         try {
         return em.createQuery("SELECT COUNT(d) FROM TravelDocument d WHERE d.issuingDate >= :start AND d.issuingDate <= :end", Long.class)
@@ -129,7 +133,7 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
                 .getSingleResult();
         } catch (Exception e) {
             log.error("An error occurred while trying to count travel documents time range: {}", e.getMessage());
-            return 0L;
+            throw e;
         }
     }
 

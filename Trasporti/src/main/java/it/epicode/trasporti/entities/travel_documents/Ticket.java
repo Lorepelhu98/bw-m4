@@ -13,7 +13,6 @@ import java.util.Date;
 @DiscriminatorValue(TravelDocumentsTables.Discriminators.TICKETS)
 public class Ticket extends TravelDocument{
 
-
     private boolean valid;
 
     @Column(name = "validation_time")
@@ -39,7 +38,6 @@ public class Ticket extends TravelDocument{
         this.valid = valid;
     }
 
-
     public Date getValidationTime() {
         return validationTime;
     }
@@ -47,7 +45,6 @@ public class Ticket extends TravelDocument{
     public void setValidationTime(Date validationTime) {
         this.validationTime = validationTime;
     }
-
 
     public Vehicle getValidationPlace() {
         return validationPlace;

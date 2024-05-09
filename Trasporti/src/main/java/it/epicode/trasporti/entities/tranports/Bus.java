@@ -8,8 +8,6 @@ import jakarta.persistence.Entity;
 @DiscriminatorValue("bus")
 public class Bus extends Vehicle {
 
-
-
     public Bus(){
         super.setCapacity(70);
     }
