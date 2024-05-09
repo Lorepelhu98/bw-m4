@@ -43,12 +43,18 @@ public class Program {
         TravelDocument document4 = new Ticket(LocalDate.of(2024, 5, 7),1L);
         TravelDocument document5 = new Ticket(LocalDate.of(2024,5,5),5L);
         TravelDocument document6 = new Ticket(LocalDate.of(2024,4,1),4L);
-        //document.save(document1);
-        //document.save(document2);
-        //document.save(document3);
-        //document.save(document4);
-        //document.save(document5);
-        //document.save(document6);
+        TravelDocument document7 = new Ticket(LocalDate.of(2024,5,1),2L);
+        TravelDocument document8 = new Ticket(LocalDate.of(2023,10,11),4L);
+        //document.emitDocument(document1);
+        //document.emitDocument(document2);
+        //document.emitDocument(document3);
+        //document.emitDocument(document4);
+        //document.emitDocument(document5);
+        //document.emitDocument(document6);
+
+        document.emitDocument(document7);
+        document.emitDocument(document8);
+
 
         Card card1 = new Card(user.findUserById(1L));
         Card card2 = new Card(user.findUserById(2L));
@@ -128,7 +134,7 @@ public class Program {
 
 
 
-        System.out.println(document.checkPassValidity(2L) ? "valida" : "non valida");
+        System.out.println("La tessera cercata " + (document.checkPassValidity(1L) ? "" : "non ") + "è valida"); //controllo validità abbonamento
 
 
         System.out.println(document.documentsPerStore(3L));
@@ -141,6 +147,8 @@ public class Program {
         LocalDate endDate2 = LocalDate.of(2024,5,6);
 
         System.out.println(document.documentsPerTimeRange(startDate2,endDate2));
+
+
 
 
     }
