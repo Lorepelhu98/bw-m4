@@ -9,6 +9,8 @@ import java.util.Date;
 public interface TravelDocumentDao {
     void save(TravelDocument travelDocument);
 
+    void emitDocument(TravelDocument travelDocument);
+
     void validateTicket(Long id, Vehicle place) throws Exception;
 
     Long ticketsPerVehicle(Long vehicleId);

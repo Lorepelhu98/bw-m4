@@ -30,7 +30,7 @@ public class Program {
 
 
         // GENERAZIONE UTENTI E RELATIVE TESSERE E SALVATAGGIO NEL DB
-        User user1 = new User("Mario","Rossi");
+        User user1 = new User("Mario", "Rossi");
         User user2 = new User("Giulia", "Bianchi");
         User user3 = new User("Riccardo", "Giallo");
         User user4 = new User("Luca", "Valentinuzzi");
@@ -43,6 +43,7 @@ public class Program {
 
         // RINNOVO DELLA TESSERA UTENTE
         //card.renewCard(4L);
+
 
         // GENERAZIONE PUNTI VENDITA E SALVATAGGIO NEL DB
         Store store1 = new TicketMachine(true);
@@ -81,19 +82,19 @@ public class Program {
 
 
         //CONTROLLO VALIDITA' ABBONAMENTO A PARTIRE DA NUMERO DI TESSERA UTENTE
-        //System.out.println("La tessera cercata " + (document.checkPassValidity(1L) ? "" : "non ") + "è valida");
+        System.out.println("La tessera cercata " + (document.checkPassValidity(1L) ? "" : "non ") + "è valida");
 
 
         //RICERCA DEL NUMERO DI TITOLI DI VIAGGIO EMESSI DA UN DETERMINATO PUNTO VENDITA
-        //System.out.println(document.documentsPerStore(3L));
-        //System.out.println(document.documentsPerStore(1L));
+        System.out.println(document.documentsPerStore(3L));
+        System.out.println(document.documentsPerStore(1L));
 
 
         //RICERCA DEL NUMERO DI TITOLI DI VIAGGIO EMESSI IN UN DETERMINATO INTERVALLO DI TEMPO
-        //LocalDate startDate2 = LocalDate.of(2024,1,1);
-        //LocalDate endDate2 = LocalDate.of(2024,5,6);
+        LocalDate startDate2 = LocalDate.of(2024,1,1);
+        LocalDate endDate2 = LocalDate.of(2024,5,6);
 
-        //System.out.println(document.documentsPerTimeRange(startDate2,endDate2));
+        System.out.println(document.documentsPerTimeRange(startDate2,endDate2));
 
 
         // GENERAZIONE VEICOLI E SALVATAGGIO NEL DB
@@ -103,6 +104,7 @@ public class Program {
         Vehicle v4 = new Bus();
         Vehicle v5 = new Bus();
         Vehicle v6 = new Tram();
+
         //vehicle.save(v1);
         //vehicle.save(v2);
         //vehicle.save(v3);
@@ -119,20 +121,21 @@ public class Program {
 
         //RICERCA DEL NUMERO DI BIGLIETTI VIDIMATI PER MEZZO
         Long veic1 = 1L;
-        //System.out.println("Numero di biglietti vidimati sul mezzo "+ veic1 + ": " + document.ticketsPerVehicle(veic1));
+        System.out.println("Numero di biglietti vidimati sul mezzo "+ veic1 + ": " + document.ticketsPerVehicle(veic1));
 
 
         //RICERCA DEL NUMERO DI BIGLIETTI VIDIMATI IN UN DATO INTERVALLO DI TEMPO
-        //SimpleDateFormat sdfh = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        //Date startDate1 = sdfh.parse("2024-02-01 00:00");
-        //Date endDate1 = sdfh.parse("2024-06-05 23:59");
-        //System.out.println("Numero di biglietti vidimati nel seguente intervallo: '"+ startDate1+ " - "+ endDate1+"': " + document.ticketsPerTimeRange(startDate1,endDate1));
+        SimpleDateFormat sdfh = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date startDate1 = sdfh.parse("2024-02-01 00:00");
+        Date endDate1 = sdfh.parse("2024-06-05 23:59");
+        System.out.println("Numero di biglietti vidimati nel seguente intervallo: '"+ startDate1+ " - "+ endDate1+"': " + document.ticketsPerTimeRange(startDate1,endDate1));
 
 
         // GENERAZIONE MANUTENZIONI E SALVATAGGIO NEL DB
         Maintenance maintenance1 = new Maintenance(vehicle.findVehicleById(3L), LocalDate.now());
         Maintenance maintenance2 = new Maintenance(vehicle.findVehicleById(3L), LocalDate.of(2024,4,30));
         maintenance2.setEnd(LocalDate.of(2024,5,1));
+
         //maintenance.save(maintenance1);
         //maintenance.save(maintenance2);
 
@@ -164,16 +167,15 @@ public class Program {
 
 
         // CALCOLO TEMPO MEDIO DI PERCORRENZA
-        //System.out.println(route.calculateAvgTime(1L));
-        //System.out.println(route.calculateAvgTime(2L));
-        //System.out.println(route.calculateAvgTime(3L));
-
+        System.out.println(route.calculateAvgTime(1L));
+        System.out.println(route.calculateAvgTime(2L));
+        System.out.println(route.calculateAvgTime(3L));
 
 
         // CALCOLO DEL NUMERO DI VOLTE CHE UN MEZZO PERCORRE UNA SPECIFICA TRATTA
         Long routeId = 1L;
         Long vehicleId = 1L;
-        //System.out.println("Il mezzo " + vehicleId+ " ha percorso "  +singleRoute.routesPerVehicle(routeId,vehicleId)+ " volte la tratta " + routeId);
+        System.out.println("Il mezzo " + vehicleId+ " ha percorso "  +singleRoute.routesPerVehicle(routeId,vehicleId)+ " volte la tratta " + routeId);
 
     }
 

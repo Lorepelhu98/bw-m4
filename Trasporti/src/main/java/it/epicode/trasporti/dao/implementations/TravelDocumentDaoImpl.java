@@ -32,6 +32,7 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
         }
     }
 
+    @Override
     public void emitDocument(TravelDocument travelDocument) {
         try {
             Store store = em.find(Store.class, travelDocument.getIssuingPlace());
@@ -73,12 +74,11 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
                 }
                 throw e;
             }
-
     }
 
     @Override
     public Long ticketsPerVehicle(Long vehicleId) {
-        Vehicle vehicle = null;
+        Vehicle vehicle;
         try {
             vehicle = em.find(Vehicle.class, vehicleId);
             if (vehicle == null) {
@@ -138,9 +138,6 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
         }
     }
 
-
-
-
     @Override
     public boolean checkPassValidity(Long cardId) {
         try {
@@ -155,5 +152,4 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
             return false;
         }
     }
-
 }
