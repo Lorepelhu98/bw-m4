@@ -1,6 +1,7 @@
 package it.epicode.trasporti.dao.interfaces;
 
 import it.epicode.trasporti.entities.Card;
+import it.epicode.trasporti.entities.User;
 
 public interface CardDao {
 

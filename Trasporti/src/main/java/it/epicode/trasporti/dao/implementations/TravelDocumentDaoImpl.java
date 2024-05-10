@@ -8,6 +8,7 @@ import it.epicode.trasporti.entities.stores.TicketMachine;
 import it.epicode.trasporti.entities.tranports.Vehicle;
 import it.epicode.trasporti.entities.travel_documents.Ticket;
 import it.epicode.trasporti.entities.travel_documents.TravelDocument;
+import it.epicode.trasporti.exceptions.StoreOutOfServiceException;
 import it.epicode.trasporti.exceptions.VehicleNotFoundException;
 import jakarta.persistence.NoResultException;
 
@@ -39,12 +40,12 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
                 if (machine.isStatus()) {
                     save(travelDocument);
                 } else {
-                    log.error("Distributore fuori servizio. Impossibile emettere titolo di viaggio");
+                    throw new StoreOutOfServiceException("Distributore fuori servizio. Impossibile emettere titolo di viaggio");
                 }
             } else if (store instanceof Reseller) {
                 save(travelDocument);
             } else {
-                log.error("Tipo di punto di acquisto non riconosciuto");
+                throw new Exception("Tipo di punto di acquisto non riconosciuto");
             }
         } catch (Exception e) {
             log.error("Errore nell'emissione del documento: {}", e.getMessage());

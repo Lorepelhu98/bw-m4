@@ -6,7 +6,7 @@ import it.epicode.trasporti.exceptions.VehicleUnderMaintenanceException;
 public interface SingleRouteDao {
     void save(SingleRoute sr);
 
-    void generateSingleRoute(SingleRoute sr) throws VehicleUnderMaintenanceException;
+    void generateSingleRoute(SingleRoute sr) throws Exception;
 
     Long routesPerVehicle(Long routeId, Long vehicleId);
 }

@@ -2,6 +2,7 @@ package it.epicode.trasporti.dao.implementations;
 
 import it.epicode.trasporti.dao.BaseDao;
 import it.epicode.trasporti.dao.interfaces.UserDao;
+import it.epicode.trasporti.entities.Card;
 import it.epicode.trasporti.entities.User;
 import jakarta.persistence.NoResultException;
 
@@ -33,6 +34,12 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         }
     }
 
+    public void generateUser(User user){
+        save(user);
+        CardDaoImpl cardDao = new CardDaoImpl();
+        Card card = new Card(user);
+        cardDao.save(card);
+    }
 
 
 }

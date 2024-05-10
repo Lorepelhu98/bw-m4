@@ -3,6 +3,7 @@ package it.epicode.trasporti.dao.implementations;
 import it.epicode.trasporti.dao.BaseDao;
 import it.epicode.trasporti.dao.interfaces.CardDao;
 import it.epicode.trasporti.entities.Card;
+import it.epicode.trasporti.entities.User;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
 

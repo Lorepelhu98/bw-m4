@@ -29,23 +29,25 @@ public class SingleRouteDaoImpl extends BaseDao implements SingleRouteDao {
     }
 
     @Override
-    public void generateSingleRoute(SingleRoute sr) throws VehicleUnderMaintenanceException {
-
-        Vehicle vehicle = sr.getVehicle();
-        List<Maintenance> maintenances = em.createQuery("SELECT m FROM Maintenance m WHERE m.vehicle = :vehicle", Maintenance.class)
-                .setParameter("vehicle", vehicle)
-                .getResultList();
-
-        boolean isUnderMaintenance = maintenances.stream()
-                .anyMatch(e -> e.getEnd() == null || e.getEnd().isAfter(LocalDate.now()));
-
-        if (isUnderMaintenance) {
-            String message = String.format("Il veicolo %d è in manutenzione. Impossibile assegnare tratta '%s' al veicolo.", vehicle.getId(), sr.getRoute().getStartingZone(), sr.getRoute().getEndOfLine());
-            log.info(message);
-            throw new VehicleUnderMaintenanceException(message);
-        } else {
-            save(sr);
-
+    public void generateSingleRoute(SingleRoute sr) {
+        try {
+            RouteDaoImpl route = new RouteDaoImpl();
+            Vehicle vehicle = sr.getVehicle();
+            List<Maintenance> maintenances = em.createQuery("SELECT m FROM Maintenance m WHERE m.vehicle = :vehicle", Maintenance.class)
+                    .setParameter("vehicle", vehicle)
+                    .getResultList();
+            boolean isUnderMaintenance = maintenances.stream()
+                    .anyMatch(e -> e.getEnd() == null || e.getEnd().isAfter(LocalDate.now()));
+            if (isUnderMaintenance) {
+                String message = String.format("Il veicolo %d è in manutenzione. Impossibile assegnare tratta '%s' al veicolo.", vehicle.getId(), sr.getRoute().getStartingZone(), sr.getRoute().getEndOfLine());
+                log.info(message);
+                throw new VehicleUnderMaintenanceException(message);
+            } else {
+                save(sr);
+                route.updateAvgTime(sr.getRoute().getId());
+            }
+        } catch (Exception e) {
+            log.error("Errore durante la generazione del percorso: " + e.getMessage());
         }
     }
 
