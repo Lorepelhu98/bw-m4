@@ -28,6 +28,9 @@ public class SingleRouteDaoImpl extends BaseDao implements SingleRouteDao {
         }
     }
 
+
+    //metodo per generare tratta compiuta dal veicolo se non è in manutenzione.
+    //vengono salvati nel db il veicolo con tratta effettuata e tempo di percorrenza.
     @Override
     public void generateSingleRoute(SingleRoute sr) {
         try {
@@ -51,6 +54,8 @@ public class SingleRouteDaoImpl extends BaseDao implements SingleRouteDao {
         }
     }
 
+
+    //controllo quante volte un veicolo fa una determinata tratta.
     @Override
     public Long routesPerVehicle(Long routeId, Long vehicleId){
 

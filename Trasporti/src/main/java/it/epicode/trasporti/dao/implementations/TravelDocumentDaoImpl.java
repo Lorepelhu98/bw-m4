@@ -32,6 +32,9 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
         }
     }
 
+    //Metodo per generare un titolo di viaggio(biglietto, abbonamento settimanale o mensile)
+    //Verifica lo stato del punto vendita da cui si vuole generarlo, e se questo è in funzione
+    //chiama il metodo save per salvarlo nel db
     @Override
     public void emitDocument(TravelDocument travelDocument) {
         try {
@@ -53,6 +56,9 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
         }
     }
 
+    //Metodo per gestire òl'obliterazione del biglietto.
+    //vengono salvati orario e mezzo su cui il biglietto è stato obliterato,
+    //e lo stato del biglietto viene passato da valido a non valido (tramite il booleano "valid")
     @Override
     public void validateTicket(Long id, Vehicle place) throws Exception {
         Ticket ticket = em.find(Ticket.class, id);
@@ -76,6 +82,7 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
             }
     }
 
+    //Metodo che restituisce il numero di biglietti vidimati su un determinato veicolo
     @Override
     public Long ticketsPerVehicle(Long vehicleId) {
         Vehicle vehicle;
@@ -96,6 +103,8 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
         }
     }
 
+
+    //Metodo che restituisce il numero di biglietti vidimati in un determinato intervallo temporale
     @Override
     public Long ticketsPerTimeRange(Date start, Date end){
 
@@ -111,6 +120,7 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
         }
     }
 
+    //Metodo che restiusce il numero di titoli di viaggio emessi da un determinato punto vendita
     @Override
     public Long documentsPerStore(Long storeId){
 
@@ -125,6 +135,8 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
 
     }
 
+
+    //Metodo che restituisce il numero di titoli di viaggio emessi in un determinato intervallo temporale
     @Override
     public Long documentsPerTimeRange(LocalDate start, LocalDate end){
         try {
@@ -138,6 +150,11 @@ public class TravelDocumentDaoImpl extends BaseDao implements TravelDocumentDao 
         }
     }
 
+    //Metodo che restituisce un booleano che permette di verificare la validità di un abbonamneto
+    //basandosi sulla data di scadenza dello stesso.
+    //Viene presa l'ultima data di rinnovo del suddetto abbonamento e vi vengono
+    //aggiunti un numero di giorni pari alla durata dello stesso.
+    //infine questa data viene confrontata con quella attuale per verificarne la validità
     @Override
     public boolean checkPassValidity(Long cardId) {
         try {

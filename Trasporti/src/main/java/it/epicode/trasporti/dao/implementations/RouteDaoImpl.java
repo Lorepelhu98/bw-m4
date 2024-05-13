@@ -33,6 +33,8 @@ public class RouteDaoImpl extends BaseDao implements RouteDao {
         }
     }
 
+    //Metodo per calcolare il tempo medio di percorrenza. Prende in ingresso l'id della rotta
+    //di cui effettuare la media, e calcola la media matematica di tutti i tempi di percorrenza inseriti
     @Override
     public int calculateAvgTime(Long routeId) {
         try {
@@ -45,6 +47,8 @@ public class RouteDaoImpl extends BaseDao implements RouteDao {
         }
     }
 
+
+    //metodo per aggiornare sul db i tempi medi di percorrenza creati col metodo calculateAvgTime
     @Override
     public void updateAvgTime(Long routeId) {
 

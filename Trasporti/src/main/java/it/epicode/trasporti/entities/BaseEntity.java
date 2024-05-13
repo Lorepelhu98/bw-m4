@@ -5,6 +5,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
+
+//Entità base che viene estesa da altre classi.
+//Include un id, che verrà utilizzato da queste entità
 @MappedSuperclass
 public class BaseEntity {
     @Id

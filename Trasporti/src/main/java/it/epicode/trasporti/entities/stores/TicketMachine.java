@@ -10,6 +10,8 @@ import jakarta.persistence.Table;
 @Table(name = StoreTables.Names.TICKET_MACHINES)
 @DiscriminatorValue(StoreTables.Discriminators.TICKET_MACHINES)
 public class TicketMachine extends Store{
+
+    //Attributo che indica se il distributore è in servizio oppure no
     public boolean status;
 
     public TicketMachine(){}

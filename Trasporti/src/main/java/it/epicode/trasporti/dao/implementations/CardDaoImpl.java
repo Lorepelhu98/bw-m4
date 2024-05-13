@@ -26,6 +26,7 @@ public class CardDaoImpl extends BaseDao implements CardDao {
         }
     }
 
+    //Funzione per trovare un oggetto di tipo Card partendo dall'id fornito.
     @Override
     public Card findCardById(Long id){
         try{
@@ -35,6 +36,9 @@ public class CardDaoImpl extends BaseDao implements CardDao {
         }
     }
 
+    //Metodo per rinnovare la tessera utente. La tessera ha scadenza annuale,
+    //questo metodo aggiorna la data dell'ultimo rinnovo alla data attuale,
+    // e la data di scadenza di conseguenza viene spostata ad un'anno da oggi
     @Override
     public void renewCard(Long id) throws Exception {
         LocalDate newRenewalDate = LocalDate.now();
@@ -43,8 +47,8 @@ public class CardDaoImpl extends BaseDao implements CardDao {
             transaction.begin();
             Card card = em.find(Card.class, id);
             if (card != null) {
-                card.setRenewalDate(newRenewalDate);
-                card.setExpirationDate(newRenewalDate.plusYears(1));
+                card.setRenewalDate(newRenewalDate); //aggiorno data di rinnovo
+                card.setExpirationDate(newRenewalDate.plusYears(1)); //setto data di scadenza di conseguenza
                 em.merge(card);
             } else {
                 throw new IllegalArgumentException("Card not found with ID: " + id);

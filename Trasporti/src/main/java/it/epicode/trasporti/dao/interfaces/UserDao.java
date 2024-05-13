@@ -6,4 +6,6 @@ public interface UserDao {
     void save(User user);
 
     User findUserById(Long id);
+
+    void generateUser(User user);
 }

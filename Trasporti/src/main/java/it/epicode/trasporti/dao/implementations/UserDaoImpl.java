@@ -34,6 +34,10 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         }
     }
 
+    //Metodo per generare un nuovo utente e la tessera che vi viene assegnata
+    // alla creazione.
+
+    @Override
     public void generateUser(User user){
         save(user);
         CardDaoImpl cardDao = new CardDaoImpl();
